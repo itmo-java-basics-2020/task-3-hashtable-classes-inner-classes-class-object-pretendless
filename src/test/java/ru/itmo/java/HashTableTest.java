@@ -78,7 +78,7 @@ public class HashTableTest {
         );
     }
 
-    private void invoke(Map<Object, Object> testInstance,
+    private void invoke(HashTable testInstance,
                         OperationPercentageProfile operationPercentageProfile,
                         KeysProvider keysProvider,
                         Supplier<?> valuesSupplier,
