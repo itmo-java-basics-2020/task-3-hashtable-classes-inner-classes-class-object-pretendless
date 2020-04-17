@@ -17,6 +17,9 @@ public class HashTable {
 
     private int Hash_Code(Object key) {
         int hash = key.hashCode() % entry.length;
+        if(hash < 0)
+            hash = hash + entry.length;
+
         return hash;
     }
 
@@ -44,7 +47,7 @@ public class HashTable {
         int hash = Hash_Code(key);
         while(entry[hash] != null)
         {
-            if(entry[hash].key == key) {
+            if(key.equals(entry[hash].key)) {
                 Object old_value = entry[hash].value;
                 entry[hash].value = value;
                 return old_value;
@@ -106,11 +109,11 @@ public class HashTable {
     }
 
     void resize() {
-        HashObject[] old_entry_map = entry;
-        entry = new HashObject[old_entry_map.length * 2];
+        HashObject[] old_entry = entry;
+        entry = new HashObject[old_entry.length * 2];
         size = 0;
         fullsize = 0;
-        for(HashObject element : old_entry_map)
+        for(HashObject element : old_entry)
             if(element != null && element.key != null){
                 put(element.key, element.value);
             }
