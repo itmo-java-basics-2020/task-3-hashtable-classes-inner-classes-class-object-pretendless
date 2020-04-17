@@ -80,7 +80,7 @@ public class HashTable {
             }
         }
 
-        return 0;
+        return null;
     }
 
     Object remove(Object key) {
